@@ -1,0 +1,144 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Center content within the viewport */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #212121;
+    color: #ffffff;
+    margin: 0;
+  }
+  
+  /* Navbar styles */
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+  }
+  
+  nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  /* Wrapper for the game content */
+  #wrapper {
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+    background-color: #474747;
+    border-radius: 8px;
+    color: #ffffff;
+  }
+  
+  h1 {
+    font-size: 2em;
+    background-color: #161616;
+    color: #ffffff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+  }
+  
+  /* Main game instructions */
+  p {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #e0e0e0;
+  }
+  
+  /* Styling for form labels and input fields */
+  #guess {
+    font-size: 1.5em;
+    color: #ffffff;
+    display: block;
+    margin: 20px 0 10px;
+  }
+  
+  #guessField {
+    width: 100%;
+    max-width: 250px;
+    height: 50px;
+    font-size: 1.2em;
+    color: #000;
+    text-align: center;
+    border: 2px solid #6c6d6d;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+  
+  /* Submit button styling */
+  #subt {
+    background-color: #161616;
+    color: #ffffff;
+    width: 100%;
+    max-width: 200px;
+    height: 50px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  #subt:hover {
+    background-color: #282828;
+  }
+  
+  /* Styling for result paragraphs */
+  .resultParas {
+    margin-top: 20px;
+  }
+  
+  .resultParas p {
+    font-size: 1em;
+    margin-bottom: 8px;
+  }
+  
+  .guesses, .lastResult {
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .guesses {
+      background-color: #7a7a7a;
+      color: white;
+      padding: 5px;
+      border-radius: 4px;
+      display: inline-block;
+      white-space: nowrap; /* Ensures text does not wrap */
+      overflow-x: auto; /* Adds horizontal scroll if guesses exceed container width */
+      max-width: 100%; /* Limits the width to avoid overflow */
+    }
+  .lastResult {
+    background-color: #333333;
+  }
+  
+  /* Hint text for low or high guesses */
+  .lowOrHi {
+    font-size: 1em;
+    margin-top: 10px;
+    color: #e0e0e0;
+  }
+  
