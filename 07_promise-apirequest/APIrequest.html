@@ -1,0 +1,126 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;">
+
+    0 UNSENT Client has been created. open() not called yet.
+    1 OPENED open() has been called.
+    2 HEADERS_RECEIVED send() has been called, and headers and status are available.
+    3 LOADING Downloading; responseText holds partial data.
+    4 DONE The operation is complete.
+
+</body>
+
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl)
+
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText);
+            console.log(typeof data);
+            console.log(data.followers);
+
+        }
+    };
+    xhr.send();
+</script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Card</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .card {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+        .card h2 {
+            margin: 10px 0;
+        }
+        .card button {
+            background-color: #6200ea;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .card button:hover {
+            background-color: #3700b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container for the user card -->
+    <div id="cardContainer"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', requestUrl);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const data = JSON.parse(this.responseText);
+
+                        // Get the container element
+                        const cardContainer = document.getElementById('cardContainer');
+
+                        // Create the card element
+                        const card = document.createElement('div');
+                        card.classList.add('card');
+
+                        // Add content to the card
+                        card.innerHTML = `
+                            <img src="${data.avatar_url}" alt="Profile Picture" style="border-radius: 50%; width: 100px; height: 100px;">
+                            <h2>${data.name || 'GitHub User'}</h2>
+                            <p>@${data.login}</p>
+                            <button>Followers: ${data.followers}</button>
+                        `;
+
+                        // Append the card to the container
+                        cardContainer.appendChild(card);
+                    } else {
+                        console.error("Failed to fetch data:", xhr.statusText);
+                    }
+                }
+            };
+
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
