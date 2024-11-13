@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+<script>
+    // function init() {
+    //     let name = "Mozilla";
+    //     function displayName(){
+    //         console.log(name);
+    //     }
+    //     displayName();
+    // }
+    // init();
+    
+    function outer() {
+        let username = "shivani";
+        let secret = "my123";  // Moved here so both inner and inner2 can access it
+        function inner(){
+            console.log("Inner", username);
+        }
+        function inner2(){
+            console.log("Inner2", username);
+            console.log(secret);  // Now accessible because secret is in outer
+        }
+        inner();
+        inner2();
+    }
+    outer();
+    // console.log("Too Outer", username);  // Removed, since username is not in global scope
+
+    //******************closure******************************
+
+    function makeFunc() {
+        const name = "mozilla";
+        function displayName() {
+            console.log(name);
+        }
+        return displayName;
+    }
+
+    const myFunc = makeFunc();
+    myFunc();
+
+</script>
+<script>
+    function clickHandler(color){
+        return function(){
+            document.body.style.backgroundColor = `${color}`;
+        };
+    }
+
+    document.getElementById('orange').onclick = clickHandler("orange");
+    document.getElementById('green').onclick = clickHandler("green");
+
+</script>
+</html>
